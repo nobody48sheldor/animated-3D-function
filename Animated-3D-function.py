@@ -1,9 +1,10 @@
 import numpy as np
-from mpl_toolkits.mplot3d import axes3d
 import matplotlib.pyplot as plt
 from matplotlib import cm
+from mpl_toolkits.mplot3d import axes3d
 
 a = int(input("render level = "))
+b = int(input("animation level = "))
 tmax = float(input("tmax = "))
 xmax = float(input("xmax = "))
 ymax = float(input("ymax = "))
@@ -13,7 +14,7 @@ Y = np.linspace(0, ymax, a)
 
 x, y = np.meshgrid(X, Y)
 
-t = np.linspace(0, tmax, a)
+t = np.linspace(0, tmax, int(b*tmax))
 
 def f(x, y, t):
     s = #your function
@@ -25,8 +26,7 @@ plt.ion()
 
 i = 0
 
-while i<a:
-    z = f(x, y, t[i])
+while i<(a*tmax):
     plt.clf()
     ax = fig.add_subplot(111, projection = '3d')
     plt.title('Time = {} secondes'.format(t[i]))
